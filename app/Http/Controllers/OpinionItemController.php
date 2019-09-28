@@ -45,11 +45,12 @@ class OpinionItemController extends Controller
      *
      * @param Request $request
      * @param OpinionItem $opinionItem
-     * @return Response
+     * @return OpinionItem
      */
     public function update(Request $request, OpinionItem $opinionItem)
     {
-        //
+        $opinionItem->update($request->only(['vote']));
+        return $opinionItem;
     }
 
     /**
