@@ -4,6 +4,11 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class TagFindRequest
+ * @package App\Http\Requests
+ * @property string $q
+ */
 class TagFindRequest extends FormRequest
 {
     /**
@@ -13,7 +18,7 @@ class TagFindRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +29,7 @@ class TagFindRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'q' => 'string'
         ];
     }
 }
