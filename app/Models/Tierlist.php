@@ -51,6 +51,8 @@ use Carbon\Carbon;
  */
 class Tierlist extends Model
 {
+    protected $with = ['items'];
+
     public function author()
     {
         return $this->belongsTo(Author::class);

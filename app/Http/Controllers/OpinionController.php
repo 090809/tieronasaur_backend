@@ -29,7 +29,7 @@ class OpinionController extends Controller
     public function showMe(Tierlist $tierlist)
     {
         return OpinionResource::make(
-            $tierlist->opinions()->firstOrCreate(['author_id' =>\Auth::user()->author->getQueueableId()])
+            $tierlist->opinions()->firstOrCreate(['author_id' => \Auth::user()->author->getQueueableId()])
         );
     }
 }

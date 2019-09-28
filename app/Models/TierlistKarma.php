@@ -32,10 +32,14 @@ use Illuminate\Support\Carbon;
  */
 class TierlistKarma extends Model
 {
-
     public function tierlist()
     {
         return $this->belongsTo(Tierlist::class);
+    }
+
+    public function vkUser()
+    {
+        return $this->belongsTo(VkUser::class);
     }
 
     protected $dispatchesEvents = [

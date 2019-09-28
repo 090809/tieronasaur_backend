@@ -1,0 +1,18 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection) or
+# paste cURL into the file and request will be converted to HTTP Request format.
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+GET http://localhost:8000/api/tierlist/popular
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU2OTY4Mjg2NywiZXhwIjoxNTcwODkyNDY3LCJuYmYiOjE1Njk2ODI4NjcsImp0aSI6IkhzWGZCQnpLZktiMUtLQ2ciLCJzdWIiOjQ5ODc5NTkzLCJwcnYiOiI3NjQ4YzVjMjgwNzY1NjEzZjczMjM1ZWE4NjdhZWY4ZjBlNWEwMzAwIn0.T2mdUKfWMTyHna5pQ_eTnpjfMV_sklTenagfY0AVK5M
+
+{
+    "last_opened": "2019-09-28 19:00:00"
+}
+
+###

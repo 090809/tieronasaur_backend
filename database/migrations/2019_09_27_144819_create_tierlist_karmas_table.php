@@ -15,7 +15,7 @@ class CreateTierlistKarmasTable extends Migration
     {
         Schema::create('tierlist_karmas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('vk_id')->unique();
+            $table->unsignedBigInteger('vk_user_id')->unique();
             $table->unsignedBigInteger('tierlist_id')->unique();
             $table->tinyInteger('karma')->default(1);
             $table->timestamps();

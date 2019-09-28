@@ -33,6 +33,8 @@ use Illuminate\Support\Carbon;
  */
 class OpinionItem extends Model
 {
+    protected $fillable = ['opinion_id', 'tierlist_item_id', 'vote'];
+
     public function opinion()
     {
         return $this->belongsTo(Opinion::class);

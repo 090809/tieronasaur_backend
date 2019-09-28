@@ -39,7 +39,11 @@ class TierlistController extends Controller
 
     public function popularIndex(TierlistPopularRequest $request)
     {
-        $lastOpened = Carbon::createFromFormat('Y-m-d H:i:s', $request->last_opened);
+        $lastOpened = Carbon::now()->subDay();
+
+        if ($request->last_opened)
+            $lastOpened = Carbon::createFromFormat('Y-m-d H:i:s', $request->last_opened);
+
         return Tierlist::popular($lastOpened)->paginate();
     }
 
@@ -74,7 +78,6 @@ class TierlistController extends Controller
 
             $tierlistItem->img = $path;
 
-            $tierlistItem->stat()->create();
             $tierlistItem->tierlist()->associate($tierlist);
         }
 

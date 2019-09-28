@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OpinionItemStoreRequest;
 use App\Models\OpinionItem;
+use App\Models\Tierlist;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -21,23 +24,13 @@ class OpinionItemController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     * @return Response
+     * @param Tierlist $tierlist
+     * @param OpinionItemStoreRequest $request
+     * @return OpinionItem|Model
      */
-    public function store(Request $request)
+    public function store(Tierlist $tierlist, OpinionItemStoreRequest $request)
     {
-        return \response()->setStatusCode(501);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param OpinionItem $opinionItem
-     * @return OpinionItem
-     */
-    public function show(OpinionItem $opinionItem)
-    {
-        return $opinionItem;
+        return OpinionItem::create($request->all());
     }
 
     /**
@@ -47,7 +40,7 @@ class OpinionItemController extends Controller
      * @param OpinionItem $opinionItem
      * @return OpinionItem
      */
-    public function update(Request $request, OpinionItem $opinionItem)
+    public function update(Tierlist $tierlist, Request $request, OpinionItem $opinionItem)
     {
         $opinionItem->update($request->only(['vote']));
         return $opinionItem;

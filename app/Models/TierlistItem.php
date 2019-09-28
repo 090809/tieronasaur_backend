@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\TierlistItemCreated;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -27,6 +28,7 @@ use Illuminate\Support\Carbon;
  * @mixin Eloquent
  * @property-read Tierlist $tierlist
  * @property-read TierlistItemStat $stat
+ * @property-read string $real_img
  */
 class TierlistItem extends Model
 {
@@ -56,4 +58,8 @@ class TierlistItem extends Model
     {
         return $this->hasOne(TierlistItemStat::class);
     }
+
+    protected $dispatchesEvents = [
+        'created' => TierlistItemCreated::class
+    ];
 }

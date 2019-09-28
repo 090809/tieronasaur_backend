@@ -31,7 +31,7 @@ class AuthorController extends Controller
      */
     public function show(Author $author)
     {
-        return AuthorResource::make($author);
+        return AuthorResource::make($author->load(['tierlists']));
     }
 
     public function me()
