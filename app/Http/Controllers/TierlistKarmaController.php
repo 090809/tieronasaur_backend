@@ -26,13 +26,34 @@ class TierlistKarmaController extends Controller
             $karmaItem->vkUser()->associate(Auth::user());
             $karmaItem->save();
 
+            $tierlist = $karmaItem->tierlist;
+            $author = $tierlist->author;
+
+            $tierlist->karma_score += $karmaItem->karma;
+            $tierlist->votes += 1;
+
+            $author->karma += $karmaItem->karma;
+            $author->votes += 1;
+
+            $tierlist->save();
+            $author->save();
+
             return ["tierlist_karma" => $tierlist->karma_score];
         }
 
         $karmaValue = $request->is_positive ? 1 : -1;
         if ($karmaItem->karma !== $karmaValue) {
             $karmaItem->update(['karma' => $karmaValue]);
-            $karmaItem->save();
+
+            $tierlist = $karmaItem->tierlist;
+            $author = $tierlist->author;
+
+            /* При изменении кармы, мы должны учесть, что значение изменилось на 2 единицы. Было -1, стало +1 -> разница 2*/
+            $tierlist->karma_score += $karmaItem->karma * 2;
+            $author->karma += $karmaItem->karma * 2;
+
+            $tierlist->save();
+            $author->save();
         }
 
         return ["tierlist_karma" => $tierlist->karma_score];
