@@ -42,6 +42,11 @@ class TierlistItemStat extends Model
     {
         if ($this->vote_count === 0)
             return 1;
-        return min(max(1, (int) round($this->vote_score / $this->vote_count), 5));
+
+        $avg = (int) round($this->vote_score / $this->vote_count);
+        if ($avg < 1)
+            return 1;
+        if ($avg > 5)
+            return 5;
     }
 }
