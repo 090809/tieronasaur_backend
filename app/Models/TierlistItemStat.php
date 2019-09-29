@@ -49,5 +49,7 @@ class TierlistItemStat extends Model
             return 1;
         if ($avg > 5)
             return 5;
+
+        return $avg;
     }
 }
