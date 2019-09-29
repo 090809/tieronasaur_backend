@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\VkMiniAppPass;
 use App\Http\Requests\LoginRequest;
 use App\Http\Resources\AuthorResource;
 use App\Models\Author;
@@ -15,6 +16,7 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware(VkMiniAppPass::class, ['only' => ['login']]);
     }
 
     public function login(LoginRequest $request)

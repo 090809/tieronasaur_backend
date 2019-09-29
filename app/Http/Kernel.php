@@ -59,7 +59,6 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
-            VkMiniAppPass::class,
             'throttle:60,1',
             'bindings',
         ],
