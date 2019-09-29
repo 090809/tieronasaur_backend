@@ -57,7 +57,7 @@ use Carbon\Carbon;
 class Tierlist extends Model
 {
 
-    protected $with = ['items'];
+    protected $with = ['items', 'author'];
 
     protected $fillable = ['rows_count', 'name'];
 
