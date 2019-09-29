@@ -22,6 +22,7 @@ class OpinionResource extends JsonResource
             'tierlist_id' => $opinion->tierlist_id,
             'author_id' => $opinion->author_id ?? -1,
             'opinions' => $opinion->opinionItems,
+            'user_karma' => $opinion->tierlist->user_karma, // TODO: fix it at front-end
             'items' => $opinion->tierlist->items, // TODO: fix it at front-end
             'tags' => $opinion->tierlist->tags, // TODO: fix it at front-end
             'tierlist' => $opinion->tierlist, // TODO: fix it at front-end
