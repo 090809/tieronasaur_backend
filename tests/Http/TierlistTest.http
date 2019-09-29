@@ -49,44 +49,60 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvX
 POST https://demo140.delta.vkhackathon.com/api/tierlist/
 Content-Type: multipart/form-data; boundary=WebAppBoundary
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU2OTY5NDExNCwiZXhwIjoxNTcwOTAzNzE0LCJuYmYiOjE1Njk2OTQxMTQsImp0aSI6Ik9sbmNOV2V1ZXZqR3VzbmgiLCJzdWIiOjQ5ODc5NTkzLCJwcnYiOiI3NjQ4YzVjMjgwNzY1NjEzZjczMjM1ZWE4NjdhZWY4ZjBlNWEwMzAwIn0.ZTSyVmCErmHs9k1F92-qRBCMQyGLZIt0_v5SKTQp7CM
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZGVtbzE0MC5kZWx0YS52a2hhY2thdGhvbi5jb21cL2FwaVwvbG9naW4iLCJpYXQiOjE1Njk3NDM2MTgsImV4cCI6MTU3MDk1MzIxOCwibmJmIjoxNTY5NzQzNjE4LCJqdGkiOiIySmdscTQ4MVNDSU1QanIxIiwic3ViIjo0OTg3OTU5MywicHJ2IjoiNzY0OGM1YzI4MDc2NTYxM2Y3MzIzNWVhODY3YWVmOGYwZTVhMDMwMCJ9.8NVXaFehCukPWkqBfc913TXR10Ljyfki0WMJ3rTgdrI
 
 --WebAppBoundary
 Content-Disposition: form-data; name="items_count"
 
 5
 --WebAppBoundary
-Content-Disposition: form-data; name="tags[]"
-
-1
---WebAppBoundary
-Content-Disposition: form-data; name="tags[]"
-
-2
---WebAppBoundary
-Content-Disposition: form-data; name="tags[]"
-
-3
---WebAppBoundary
 Content-Disposition: form-data; name="name"
 
-cool_name
+Самый полезный член команды на хакатоне
 --WebAppBoundary
-Content-Disposition: form-data; name="items[]"; filename="1.png"
+Content-Disposition: form-data; name="tags[]"
 
-< /Users/pallam/Downloads/Tierанозавр/Rectangle 3.1.png
+5
 --WebAppBoundary
-Content-Disposition: form-data; name="items[]"; filename="2.png"
+Content-Disposition: form-data; name="tags[]"
 
-< /Users/pallam/Downloads/Tierанозавр/Rectangle 3.2.png
+7
 --WebAppBoundary
-Content-Disposition: form-data; name="items[]"; filename="3.png"
+Content-Disposition: form-data; name="tags[]"
 
-< /Users/pallam/Downloads/Tierанозавр/Rectangle 3.3.png
+12
 --WebAppBoundary
-Content-Disposition: form-data; name="items[]"; filename="4.png"
+Content-Disposition: form-data; name="tags[]"
 
-< /Users/pallam/Downloads/Tierанозавр/Rectangle 3.4.png
+16
+--WebAppBoundary
+Content-Disposition: form-data; name="tags[]"
+
+17
+--WebAppBoundary
+Content-Disposition: form-data; name="tags[]"
+
+18
+--WebAppBoundary
+Content-Disposition: form-data; name="items[]"; filename="uiux.png"
+
+< /Users/pallam/Downloads/Т®аЂ®бвл/5. С†ђл© ѓЃЂ•І≠л© зЂ•≠ ™Ѓђ†≠§л ≠† Х†™†вЃ≠/uiux.png
+--WebAppBoundary
+Content-Disposition: form-data; name="items[]"; filename="mobile.png"
+
+< /Users/pallam/Downloads/Т®аЂ®бвл/5. С†ђл© ѓЃЂ•І≠л© зЂ•≠ ™Ѓђ†≠§л ≠† Х†™†вЃ≠/mobile.png
+--WebAppBoundary
+Content-Disposition: form-data; name="items[]"; filename="manager.png"
+
+< /Users/pallam/Downloads/Т®аЂ®бвл/5. С†ђл© ѓЃЂ•І≠л© зЂ•≠ ™Ѓђ†≠§л ≠† Х†™†вЃ≠/manager.png
+--WebAppBoundary
+Content-Disposition: form-data; name="items[]"; filename="front.png"
+
+< /Users/pallam/Downloads/Т®аЂ®бвл/5. С†ђл© ѓЃЂ•І≠л© зЂ•≠ ™Ѓђ†≠§л ≠† Х†™†вЃ≠/front.png
+--WebAppBoundary
+Content-Disposition: form-data; name="items[]"; filename="back.png"
+
+< /Users/pallam/Downloads/Т®аЂ®бвл/5. С†ђл© ѓЃЂ•І≠л© зЂ•≠ ™Ѓђ†≠§л ≠† Х†™†вЃ≠/back.png
 --WebAppBoundary--
 
 ###

@@ -42,6 +42,6 @@ class TierlistItemStat extends Model
     {
         if ($this->vote_count === 0)
             return 1;
-        return $this->vote_score / $this->vote_count;
+        return (int) round($this->vote_score / $this->vote_count);
     }
 }

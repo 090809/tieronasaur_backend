@@ -23,14 +23,14 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvX
 {}
 
 ###
-POST http://localhost:8000/api/tierlist/2/opinion/
+POST https://demo140.delta.vkhackathon.com/api/tierlist/8/opinion/
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU2OTY5NDExNCwiZXhwIjoxNTcwOTAzNzE0LCJuYmYiOjE1Njk2OTQxMTQsImp0aSI6Ik9sbmNOV2V1ZXZqR3VzbmgiLCJzdWIiOjQ5ODc5NTkzLCJwcnYiOiI3NjQ4YzVjMjgwNzY1NjEzZjczMjM1ZWE4NjdhZWY4ZjBlNWEwMzAwIn0.ZTSyVmCErmHs9k1F92-qRBCMQyGLZIt0_v5SKTQp7CM
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZGVtbzE0MC5kZWx0YS52a2hhY2thdGhvbi5jb21cL2FwaVwvbG9naW4iLCJpYXQiOjE1Njk3NDM2MTgsImV4cCI6MTU3MDk1MzIxOCwibmJmIjoxNTY5NzQzNjE4LCJqdGkiOiIySmdscTQ4MVNDSU1QanIxIiwic3ViIjo0OTg3OTU5MywicHJ2IjoiNzY0OGM1YzI4MDc2NTYxM2Y3MzIzNWVhODY3YWVmOGYwZTVhMDMwMCJ9.8NVXaFehCukPWkqBfc913TXR10Ljyfki0WMJ3rTgdrI
 
 {
-    "tierlist_item_id": 1,
-    "vote": 3
+    "tierlist_item_id": 33,
+    "vote": 2
 }
 
 ###
