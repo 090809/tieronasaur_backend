@@ -35,6 +35,6 @@ class VkMiniAppPass
         if ($request->sign === $sign)
             return $next($request);
 
-        return response()->setStatusCode(401);
+        return response()->json(['status' => 'error', 'message' => 'VK not authenticated!'])->setStatusCode(401);
     }
 }
