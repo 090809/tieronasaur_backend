@@ -144,6 +144,7 @@ class Tierlist extends Model
             $opinionItems[] = ['vote' => $item_stat->vote_avg, 'tierlist_item_id' => $item_stat->tierlist_item_id];
         }
 
+        $opinion->tierlist = $this; // TODO: hack, fix at front-end
         $opinion->tierlist_id = $this->getQueueableId();
         $opinion->opinionItems = $opinionItems;
         return $opinion;
