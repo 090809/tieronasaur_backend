@@ -32,6 +32,7 @@ use Illuminate\Support\Carbon;
  */
 class Opinion extends Model
 {
+    protected $fillable = ['author_id']; // TODO: hack, fix at backend.
 
     public function tierlist()
     {
