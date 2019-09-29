@@ -16,6 +16,16 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvX
 }
 
 ###
+GET http://localhost:8000/api/tierlist/
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU2OTY5NDExNCwiZXhwIjoxNTcwOTAzNzE0LCJuYmYiOjE1Njk2OTQxMTQsImp0aSI6Ik9sbmNOV2V1ZXZqR3VzbmgiLCJzdWIiOjQ5ODc5NTkzLCJwcnYiOiI3NjQ4YzVjMjgwNzY1NjEzZjczMjM1ZWE4NjdhZWY4ZjBlNWEwMzAwIn0.ZTSyVmCErmHs9k1F92-qRBCMQyGLZIt0_v5SKTQp7CM
+
+{
+  "last_opened": "2019-09-28 19:00:00"
+}
+
+###
 POST http://localhost:8000/api/tierlist/2/karma
 Content-Type: application/json
 Accept: application/json

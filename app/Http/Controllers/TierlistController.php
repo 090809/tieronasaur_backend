@@ -32,7 +32,7 @@ class TierlistController extends Controller
      */
     public function index()
     {
-        return Tierlist::newly()->paginate();
+        return TierlistResource::collection(Tierlist::newly()->paginate());
     }
 
     public function popularIndex(TierlistPopularRequest $request)
@@ -42,12 +42,12 @@ class TierlistController extends Controller
         if ($request->last_opened)
             $lastOpened = Carbon::createFromFormat('Y-m-d H:i:s', $request->last_opened);
 
-        return Tierlist::popular($lastOpened)->paginate();
+        return TierlistResource::collection(Tierlist::popular($lastOpened)->paginate());
     }
 
     public function friendIndex(TierlistFriendRequest $request)
     {
-        return Tierlist::friends($request->friends)->paginate();
+        return TierlistResource::collection(Tierlist::friends($request->friends)->paginate());
     }
 
     /**

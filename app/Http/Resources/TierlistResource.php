@@ -18,7 +18,7 @@ class TierlistResource extends JsonResource
         /** @var Tierlist $tierlist */
         $tierlist = $this;
         return [
-            'id' => $tierlist->getQueueableId(),
+            'id' => $tierlist->id,
             'name' => $tierlist->name,
             'author' => $tierlist->author,
             'votes' => $tierlist->votes,
