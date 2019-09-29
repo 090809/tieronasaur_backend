@@ -15,8 +15,8 @@ class VkMiniAppPass
      */
     public function handle($request, Closure $next)
     {
-        if (config('app.debug'))
-            return $next($request);
+        //if (config('app.debug'))
+        //  return $next($request);
 
         $sign_params = [];
         $client_secret = config('app.vk.secret');
