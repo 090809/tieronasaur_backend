@@ -6,7 +6,7 @@
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
-POST http://localhost:8000/api/login
+POST https://demo140.delta.vkhackathon.com/api/login
 Content-Type: application/json
 Accept: application/json
 
