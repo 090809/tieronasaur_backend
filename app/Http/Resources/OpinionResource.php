@@ -22,6 +22,7 @@ class OpinionResource extends JsonResource
             'tierlist_id' => $opinion->tierlist_id,
             'author_id' => $opinion->author_id ?? -1,
             'opinions' => $opinion->opinionItems,
+            'items' => $opinion->tierlist->items, // TODO: fix it at front-end
         ];
     }
 }
