@@ -20,7 +20,7 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        return Author::paginate();
+        return Author::orderByDesc('karma')->paginate();
     }
 
     /**
