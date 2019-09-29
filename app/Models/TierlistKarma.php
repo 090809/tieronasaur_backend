@@ -7,6 +7,7 @@ use App\Events\TierlistKarmaUpdated;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 
 /**
@@ -29,9 +30,14 @@ use Illuminate\Support\Carbon;
  * @method static Builder|TierlistKarma whereTierlistId($value)
  * @method static Builder|TierlistKarma whereUpdatedAt($value)
  * @method static Builder|TierlistKarma whereVkId($value)
+ * @property int $vk_user_id
+ * @property-read \App\Models\VkUser $vkUser
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\TierlistKarma whereVkUserId($value)
  */
 class TierlistKarma extends Model
 {
+    protected $fillable = ['karma'];
+
     public function tierlist()
     {
         return $this->belongsTo(Tierlist::class);
@@ -41,9 +47,4 @@ class TierlistKarma extends Model
     {
         return $this->belongsTo(VkUser::class);
     }
-
-    protected $dispatchesEvents = [
-        'created' => TierlistKarmaCreated::class,
-        'updated' => TierlistKarmaUpdated::class
-    ];
 }

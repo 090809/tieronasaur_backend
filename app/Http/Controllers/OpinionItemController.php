@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\OpinionItemStoreRequest;
+use App\Models\Opinion;
 use App\Models\OpinionItem;
 use App\Models\Tierlist;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -30,7 +32,22 @@ class OpinionItemController extends Controller
      */
     public function store(Tierlist $tierlist, OpinionItemStoreRequest $request)
     {
-        return OpinionItem::create($request->all());
+        /** @var Opinion $opinion */
+        $opinion = $tierlist->opinions()->where('author_id', \Auth::user()->author->getQueueableId())->first();
+
+        if ($opinion->opinionItems()->where('tierlist_item_id', $request->tierlist_item_id)->first())
+            return response()->json([
+                'status' => 'error',
+                'message' => 'opinionItem with this tierlist_item_id exists!'
+            ])->setStatusCode(422);
+
+        $opinionItem = new OpinionItem();
+        $opinionItem->fill($request->all());
+
+        $opinionItem->opinion()->associate($opinion);
+        $opinionItem->save();
+
+        return $opinionItem;
     }
 
     /**
@@ -38,10 +55,13 @@ class OpinionItemController extends Controller
      *
      * @param Request $request
      * @param OpinionItem $opinionItem
-     * @return OpinionItem
+     * @return OpinionItem|ResponseFactory|Response
      */
     public function update(Tierlist $tierlist, Request $request, OpinionItem $opinionItem)
     {
+        if ($opinionItem->opinion->author->getQueueableId() !== \Auth::user()->author->getQueueableId())
+            return response('', 401);
+
         $opinionItem->update($request->only(['vote']));
         return $opinionItem;
     }

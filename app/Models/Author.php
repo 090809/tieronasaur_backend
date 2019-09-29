@@ -40,10 +40,10 @@ use Illuminate\Support\Carbon;
  * @mixin Eloquent
  * @property int|null $vk_user_id
  * @property int|null $vk_community_id
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Author whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Author whereVkCommunityId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Author whereVkUserId($value)
+ * @property Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Author whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Author whereVkCommunityId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Author whereVkUserId($value)
  */
 class Author extends Model
 {

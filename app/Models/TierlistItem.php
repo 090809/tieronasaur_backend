@@ -58,8 +58,4 @@ class TierlistItem extends Model
     {
         return $this->hasOne(TierlistItemStat::class);
     }
-
-    protected $dispatchesEvents = [
-        'created' => TierlistItemCreated::class
-    ];
 }

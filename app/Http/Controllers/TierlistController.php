@@ -7,13 +7,11 @@ use App\Http\Requests\TierlistPopularRequest;
 use App\Http\Requests\TierlistStoreRequest;
 use App\Http\Resources\TierlistResource;
 use App\Models\Author;
+use App\Models\Tag;
 use App\Models\Tierlist;
 use App\Models\TierlistItem;
-use App\Models\TierlistItemStat;
 use App\Services\ImageUploader;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 /**
  * Class TierlistController
@@ -69,19 +67,23 @@ class TierlistController extends Controller
 
     private function createTierlist(TierlistStoreRequest $request, Author $author)
     {
-        $tierlist = Tierlist::create($request->except(['items']));
-        $tierlist->author()->associate(\Auth::user());
+        $tierlist = new Tierlist($request->except(['items']));
+        $tierlist->author()->associate(\Auth::user()->author);
+
+        $tierlist->save();
+
+        $tierlist->tags()->attach($request->tags);
 
         foreach ($request->file('items') as $item) {
-            $tierlistItem = TierlistItem::create();
+            $tierlistItem = new TierlistItem();
             $path = $this->uploader->upload($item);
 
             $tierlistItem->img = $path;
 
-            $tierlistItem->tierlist()->associate($tierlist);
+            $tierlist->items()->save($tierlistItem);
         }
 
-        return $tierlist;
+        return TierlistResource::make($tierlist->load(['author', 'tags']));
     }
 
     private function storeAsCommunity(TierlistStoreRequest $request)
@@ -113,6 +115,6 @@ class TierlistController extends Controller
      */
     public function show(Tierlist $tierlist)
     {
-        return TierlistResource::make($tierlist);
+        return TierlistResource::make($tierlist->load(['author', 'tags']));
     }
 }

@@ -11,14 +11,14 @@ class TagController extends Controller
     public function index(TagFindRequest $request)
     {
         if ($request->q)
-            return Tag::where('name', 'like', `%{$request->q}%`)->paginate();
+            return Tag::where('name', 'like', '%' . $request->q . '%')->paginate();
 
         return Tag::paginate();
     }
 
     public function find(TagFindRequest $request)
     {
-        return Tag::where('name', 'like', `%{$request->q}%`)
+        return Tag::where('name', 'like', '%' . $request->q . '%')
             ->paginate();
     }
 

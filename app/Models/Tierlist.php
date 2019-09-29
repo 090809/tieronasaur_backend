@@ -17,7 +17,7 @@ use Carbon\Carbon;
  * @property int $id
  * @property string $name
  * @property int|null $author_id
- * @property int $items_count
+ * @property int $rows_count
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Author|null $author
@@ -48,10 +48,18 @@ use Carbon\Carbon;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TierlistItemStat[] $itemStats
  * @property-read int|null $item_stats_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TierlistItem[] $items
+ * @property int $karma_score
+ * @property-read int|null $items_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tierlist whereKarmaScore($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tierlist whereRowsCount($value)
+ * @property-read mixed $user_karma
  */
 class Tierlist extends Model
 {
+
     protected $with = ['items'];
+
+    protected $fillable = ['rows_count', 'name'];
 
     public function author()
     {
@@ -133,11 +141,19 @@ class Tierlist extends Model
         $opinionItems = [];
 
         /** @var TierlistItemStat $item_stat */
-        foreach ($this->item_stats as $item_stat) {
+        foreach ($this->itemStats as $item_stat) {
             $opinionItems[] = ['vote' => $item_stat->vote_avg, 'tierlist_item_id' => $item_stat->tierlist_item_id];
         }
 
+        $opinion->tierlist_id = $this->getQueueableId();
         $opinion->opinionItems = $opinionItems;
         return $opinion;
+    }
+
+    public function getUserKarmaAttribute()
+    {
+        /** @var TierlistKarma $karma */
+        $karma = $this->karmas()->where('vk_user_id', \Auth::user()->id)->first();
+        return $karma ? $karma->karma : 0;
     }
 }

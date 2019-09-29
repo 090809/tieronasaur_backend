@@ -9,7 +9,7 @@ use Illuminate\Foundation\Http\FormRequest;
  * @package App\Http\Requests
  * @property integer $items_count
  * @property string $name
- * @property
+ * @property integer[] $tags
  */
 class TierlistStoreRequest extends FormRequest
 {
@@ -31,7 +31,9 @@ class TierlistStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'items_count' => 'integer',
+            'rows_count' => 'integer',
+            'tags' => 'array',
+            'tags.*' => 'integer',
             'name' => 'string|required',
             'items' => 'required|array',
             'items.*' => 'image'

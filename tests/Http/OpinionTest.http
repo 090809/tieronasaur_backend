@@ -6,77 +6,31 @@
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
-GET http://localhost:8000/api/tierlist/popular
+GET http://localhost:8000/api/tierlist/2/opinion/all
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU2OTY5NDExNCwiZXhwIjoxNTcwOTAzNzE0LCJuYmYiOjE1Njk2OTQxMTQsImp0aSI6Ik9sbmNOV2V1ZXZqR3VzbmgiLCJzdWIiOjQ5ODc5NTkzLCJwcnYiOiI3NjQ4YzVjMjgwNzY1NjEzZjczMjM1ZWE4NjdhZWY4ZjBlNWEwMzAwIn0.ZTSyVmCErmHs9k1F92-qRBCMQyGLZIt0_v5SKTQp7CM
+
+{}
+
+###
+
+GET http://localhost:8000/api/tierlist/2/opinion/author
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU2OTY5NDExNCwiZXhwIjoxNTcwOTAzNzE0LCJuYmYiOjE1Njk2OTQxMTQsImp0aSI6Ik9sbmNOV2V1ZXZqR3VzbmgiLCJzdWIiOjQ5ODc5NTkzLCJwcnYiOiI3NjQ4YzVjMjgwNzY1NjEzZjczMjM1ZWE4NjdhZWY4ZjBlNWEwMzAwIn0.ZTSyVmCErmHs9k1F92-qRBCMQyGLZIt0_v5SKTQp7CM
+
+{}
+
+###
+POST http://localhost:8000/api/tierlist/2/opinion/
 Content-Type: application/json
 Accept: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU2OTY5NDExNCwiZXhwIjoxNTcwOTAzNzE0LCJuYmYiOjE1Njk2OTQxMTQsImp0aSI6Ik9sbmNOV2V1ZXZqR3VzbmgiLCJzdWIiOjQ5ODc5NTkzLCJwcnYiOiI3NjQ4YzVjMjgwNzY1NjEzZjczMjM1ZWE4NjdhZWY4ZjBlNWEwMzAwIn0.ZTSyVmCErmHs9k1F92-qRBCMQyGLZIt0_v5SKTQp7CM
 
 {
-    "last_opened": "2019-09-28 19:00:00"
+    "tierlist_item_id": 1,
+    "vote": 3
 }
-
-###
-POST http://localhost:8000/api/tierlist/2/karma
-Content-Type: application/json
-Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU2OTY5NDExNCwiZXhwIjoxNTcwOTAzNzE0LCJuYmYiOjE1Njk2OTQxMTQsImp0aSI6Ik9sbmNOV2V1ZXZqR3VzbmgiLCJzdWIiOjQ5ODc5NTkzLCJwcnYiOiI3NjQ4YzVjMjgwNzY1NjEzZjczMjM1ZWE4NjdhZWY4ZjBlNWEwMzAwIn0.ZTSyVmCErmHs9k1F92-qRBCMQyGLZIt0_v5SKTQp7CM
-
-{
-    "is_positive": false
-}
-
-###
-POST http://localhost:8000/api/tierlist/2/karma
-Content-Type: application/json
-Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU2OTY5NDExNCwiZXhwIjoxNTcwOTAzNzE0LCJuYmYiOjE1Njk2OTQxMTQsImp0aSI6Ik9sbmNOV2V1ZXZqR3VzbmgiLCJzdWIiOjQ5ODc5NTkzLCJwcnYiOiI3NjQ4YzVjMjgwNzY1NjEzZjczMjM1ZWE4NjdhZWY4ZjBlNWEwMzAwIn0.ZTSyVmCErmHs9k1F92-qRBCMQyGLZIt0_v5SKTQp7CM
-
-{
-  "is_positive": true
-}
-
-###
-POST http://localhost:8000/api/tierlist/
-Content-Type: multipart/form-data; boundary=WebAppBoundary
-Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU2OTY5NDExNCwiZXhwIjoxNTcwOTAzNzE0LCJuYmYiOjE1Njk2OTQxMTQsImp0aSI6Ik9sbmNOV2V1ZXZqR3VzbmgiLCJzdWIiOjQ5ODc5NTkzLCJwcnYiOiI3NjQ4YzVjMjgwNzY1NjEzZjczMjM1ZWE4NjdhZWY4ZjBlNWEwMzAwIn0.ZTSyVmCErmHs9k1F92-qRBCMQyGLZIt0_v5SKTQp7CM
-
---WebAppBoundary
-Content-Disposition: form-data; name="items_count"
-
-5
---WebAppBoundary
-Content-Disposition: form-data; name="tags[]"
-
-1
---WebAppBoundary
-Content-Disposition: form-data; name="tags[]"
-
-2
---WebAppBoundary
-Content-Disposition: form-data; name="tags[]"
-
-3
---WebAppBoundary
-Content-Disposition: form-data; name="name"
-
-cool_name
---WebAppBoundary
-Content-Disposition: form-data; name="items[]"; filename="1.png"
-
-< /Users/pallam/Downloads/Tierанозавр/Rectangle 3.1.png
---WebAppBoundary
-Content-Disposition: form-data; name="items[]"; filename="2.png"
-
-< /Users/pallam/Downloads/Tierанозавр/Rectangle 3.2.png
---WebAppBoundary
-Content-Disposition: form-data; name="items[]"; filename="3.png"
-
-< /Users/pallam/Downloads/Tierанозавр/Rectangle 3.3.png
---WebAppBoundary
-Content-Disposition: form-data; name="items[]"; filename="4.png"
-
-< /Users/pallam/Downloads/Tierанозавр/Rectangle 3.4.png
---WebAppBoundary--
 
 ###

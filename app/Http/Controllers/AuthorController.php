@@ -38,4 +38,9 @@ class AuthorController extends Controller
     {
         return Auth::user()->author;
     }
+
+    public function tierlists(Author $author)
+    {
+        return $author->tierlists()->paginate();
+    }
 }

@@ -27,10 +27,12 @@ use Illuminate\Support\Carbon;
  * @method static Builder|TierlistItemStat whereVoteScore($value)
  * @mixin Eloquent
  * @property-read mixed $vote_avg
- * @property-read \App\Models\TierlistItem $tierlistItem
+ * @property-read TierlistItem $tierlistItem
  */
 class TierlistItemStat extends Model
 {
+    protected $fillable = ['vote_count', 'vote_score'];
+
     public function tierlistItem()
     {
         return $this->belongsTo(TierlistItem::class);
@@ -38,6 +40,8 @@ class TierlistItemStat extends Model
 
     public function getVoteAvgAttribute()
     {
+        if ($this->vote_count === 0)
+            return 1;
         return $this->vote_score / $this->vote_count;
     }
 }

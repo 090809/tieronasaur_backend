@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
@@ -22,11 +23,13 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Tag whereName($value)
  * @method static Builder|Tag whereUpdatedAt($value)
  * @mixin Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Tierlist[] $tierlists
+ * @property-read Collection|Tierlist[] $tierlists
  * @property-read int|null $tierlists_count
  */
 class Tag extends Model
 {
+    protected $fillable = ['name'];
+
     public function tierlists()
     {
         return $this->belongsToMany(Tierlist::class);

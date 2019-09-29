@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use App\Models\VkUser;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class VkUserController extends Controller
 {

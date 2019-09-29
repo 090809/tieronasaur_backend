@@ -1,0 +1,16 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection) or
+# paste cURL into the file and request will be converted to HTTP Request format.
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+GET http://localhost:8000/api/tierlist/6/opinion/my/preview
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU2OTY5NDExNCwiZXhwIjoxNTcwOTAzNzE0LCJuYmYiOjE1Njk2OTQxMTQsImp0aSI6Ik9sbmNOV2V1ZXZqR3VzbmgiLCJzdWIiOjQ5ODc5NTkzLCJwcnYiOiI3NjQ4YzVjMjgwNzY1NjEzZjczMjM1ZWE4NjdhZWY4ZjBlNWEwMzAwIn0.ZTSyVmCErmHs9k1F92-qRBCMQyGLZIt0_v5SKTQp7CM
+
+{}
+
+###

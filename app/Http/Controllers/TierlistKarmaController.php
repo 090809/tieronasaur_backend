@@ -5,27 +5,35 @@ namespace App\Http\Controllers;
 use App\Http\Requests\KarmaRequest;
 use App\Models\Tierlist;
 use App\Models\TierlistKarma;
-use Illuminate\Http\Request;
+use Auth;
 
 class TierlistKarmaController extends Controller
 {
     public function karma(Tierlist $tierlist, KarmaRequest $request)
     {
-        /** @var TierlistKarma $karmaItem */
-        $karmaItem = $tierlist->karmas()->first(['vk_user_id' => \Auth::user()->id]);
+        if (!$tierlist)
+            return response('', 403);
 
-        if (!$karmaItem->exists()) {
+        /** @var TierlistKarma $karmaItem */
+        $karmaItem = $tierlist->karmas()
+            ->where(['vk_user_id' => Auth::user()->id])
+            ->first();
+
+        if (!$karmaItem) {
             $karmaItem = new TierlistKarma();
             $karmaItem->karma = $request->is_positive ? 1 : -1;
             $karmaItem->tierlist()->associate($tierlist);
-            $karmaItem->vkUser()->associate(\Auth::user());
-            return;
+            $karmaItem->vkUser()->associate(Auth::user());
+            $karmaItem->save();
+            return ["tierlist_karma" => $tierlist->karma_score];
         }
 
         $karmaValue = $request->is_positive ? 1 : -1;
         if ($karmaItem->karma !== $karmaValue) {
-            $karmaItem->karma = $karmaItem;
+            $karmaItem->update(['karma' => $karmaValue]);
             $karmaItem->save();
         }
+
+        return ["tierlist_karma" => $tierlist->karma_score];
     }
 }

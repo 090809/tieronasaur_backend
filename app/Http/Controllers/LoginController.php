@@ -8,6 +8,7 @@ use App\Models\Author;
 use App\Models\VkUser;
 use DemeterChain\A;
 use Illuminate\Http\Request;
+use JWTAuth;
 
 class LoginController extends Controller
 {
@@ -21,7 +22,8 @@ class LoginController extends Controller
         $user = VkUser::find($request->id);
 
         if (!$user) {
-            $user = VkUser::create($request->only('id'));
+            VkUser::create($request->only('id'));
+            $user = VkUser::find($request->id); // TODO: *Bug: Не работает токен в обычном случае.
         }
 
         $author = $user->author;
@@ -30,10 +32,10 @@ class LoginController extends Controller
             $author = new Author();
             $author->vkUser()->associate($request->id);
             $author->save();
-            $author->first_login = true;
+            $author->first_login = true; // magic value for AuthorResource
         }
 
-        $author->token = auth()->login($user);
+        $author->token = JWTAuth::fromUser($user);
         return AuthorResource::make($author);
     }
 }

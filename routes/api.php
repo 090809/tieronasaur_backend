@@ -17,6 +17,9 @@ Route::any('login', 'LoginController@login');
 
 Route::middleware('auth:api')->group(function () {
     Route::prefix('author')->group(function() {
+        Route::get('{author}', 'AuthorController@show');
+        Route::get('{author}/tierlist', 'AuthorController@tierlists');
+        Route::get('', 'AuthorController@index');
         Route::get('me', 'AuthorController@me');
     });
 
@@ -26,15 +29,27 @@ Route::middleware('auth:api')->group(function () {
         Route::get('popular', 'TierlistController@popularIndex');
         Route::get('friends', 'TierlistController@friendIndex');
 
-        // api/tierlist/{id}/
-        Route::prefix('{id}')->group(function () {
+        // api/tierlist/{tierlist}/
+        Route::prefix('{tierlist}')->group(function () {
             Route::get('', 'TierlistController@show');
+            Route::post('karma', 'TierlistKarmaController@karma');
 
-            // api/tierlist/{id}/opinion
+            // api/tierlist/{tierlist}/opinion
             Route::prefix('opinion')->group(function () {
-                Route::get('all', 'OpinionController@show');
-                Route::get('my', 'OpinionController@showMe');
-                Route::get('author', 'OpinionController@showAuthor');
+                Route::prefix('all')->group(function() {
+                    Route::get('', 'OpinionController@show');
+                    Route::get('preview', 'PreviewController@show');
+                });
+
+                Route::prefix('my')->group(function() {
+                    Route::get('', 'OpinionController@showMe');
+                    // api/tierlist/{tierlist}/opinion/my/preview
+                    Route::get('preview', 'PreviewController@showMe');
+                });
+                Route::prefix('author')->group(function() {
+                    Route::get('', 'OpinionController@showAuthor');
+                    Route::get('preview', 'PreviewController@showAuthor');
+                });
 
                 Route::post('', 'OpinionItemController@store');
                 Route::patch('', 'OpinionItemController@update');
@@ -42,5 +57,11 @@ Route::middleware('auth:api')->group(function () {
         });
 
         Route::post('', 'TierlistController@store');
+    });
+
+    Route::prefix('tag')->group(function() {
+        Route::get('', 'TagController@index');
+        Route::get('find', 'TagController@find');
+        Route::post('', 'TagController@store');
     });
 });

@@ -28,8 +28,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|OpinionItem whereUpdatedAt($value)
  * @method static Builder|OpinionItem whereVote($value)
  * @mixin Eloquent
- * @property-read \App\Models\Opinion $opinion
- * @property-read \App\Models\TierlistItem $tierlistItem
+ * @property-read Opinion $opinion
+ * @property-read TierlistItem $tierlistItem
  */
 class OpinionItem extends Model
 {
@@ -44,9 +44,4 @@ class OpinionItem extends Model
     {
         return $this->belongsTo(TierlistItem::class);
     }
-
-    protected $dispatchesEvents = [
-        'created' => OpinionItemCreated::class,
-        'updated' => OpinionItemUpdated::class,
-    ];
 }

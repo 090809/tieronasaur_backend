@@ -4,6 +4,12 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class OpinionItemStoreRequest
+ * @package App\Http\Requests
+ * @property integer $tierlist_item_id
+ * @property integer $vote
+ */
 class OpinionItemStoreRequest extends FormRequest
 {
     /**
@@ -24,7 +30,6 @@ class OpinionItemStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'opinion_id' => 'required|integer',
             'tierlist_item_id' => 'required|integer',
             'vote' => 'required|digits_between:1,5'
         ];

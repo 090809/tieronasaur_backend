@@ -17,9 +17,9 @@ class CreateTierlistsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->unsignedBigInteger('author_id')->nullable();
-            $table->unsignedTinyInteger('items_count')->default(5);
+            $table->unsignedTinyInteger('rows_count')->default(5);
             $table->unsignedInteger('votes')->default(0);
-            $table->integer('karma')->default(0);
+            $table->bigInteger('karma_score')->default(0);
             $table->timestamps();
 
             $table->foreign('author_id')
