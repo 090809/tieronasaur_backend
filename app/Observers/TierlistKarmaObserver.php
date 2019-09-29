@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\TierlistKarma;
+use phpDocumentor\Reflection\DocBlock\Tags\Reference\Url;
 
 class TierlistKarmaObserver
 {
@@ -25,6 +26,8 @@ class TierlistKarmaObserver
 
         $tierlist->save();
         $author->save();
+
+        return true;
     }
 
     /**
@@ -44,5 +47,7 @@ class TierlistKarmaObserver
 
         $tierlist->save();
         $author->save();
+
+        return true;
     }
 }

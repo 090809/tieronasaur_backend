@@ -25,6 +25,7 @@ class TierlistKarmaController extends Controller
             $karmaItem->tierlist()->associate($tierlist);
             $karmaItem->vkUser()->associate(Auth::user());
             $karmaItem->save();
+
             return ["tierlist_karma" => $tierlist->karma_score];
         }
 
